@@ -1,7 +1,18 @@
 function makeid(l) {
-  // write your code here
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    
+    for (let i = 0; i < l; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters.charAt(randomIndex);
+    }
+    
+    return result;
 }
 
-// Do not change the code below.
-const l = prompt("Enter a number.");
-alert(makeid(l));
+document.getElementById('stringForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const length = document.getElementById('length').value;
+    const result = makeid(length);
+    document.getElementById('result').innerText = 'Generated string: ' + result;
+});
